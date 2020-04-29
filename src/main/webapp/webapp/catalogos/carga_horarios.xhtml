@@ -27,7 +27,7 @@
                                        <center> <p:graphicImage value="/resources/images/ex.png"  width="200px" height="200px"  title="UAT" /></center>
                                        <center><h:panelGrid columns="2" cellpadding="10">
                                        <p:fileUpload label="Cargar archivo CSV" fileUploadListener="#{horariosController.cargarHorarios}" mode="advanced"
-                                              update=":form" auto="true" allowTypes="/(\.|\/)(csv)$/"  invalidFileMessage="no se pudo" />
+                                                     update=":form" auto="true" allowTypes="/(\.|\/)(csv)$/"  invalidFileMessage="Verifique archivo" oncomplete="#{horariosController.mostrarLista()}"/>
                                         </h:panelGrid></center>
                                         </p:panel>
                                     </div></center>

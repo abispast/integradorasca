@@ -32,7 +32,7 @@ public class HorariosDAO extends EntitiManager<Horarios>{
         return persistence.getMysql();
     }
     public List<Horarios> listaActivos(){
-        return persistence.getMysql().createNamedQuery("Horarios.findAll").getResultList();/////////Nuevo metod de consulta
+        return persistence.getMysql().createNamedQuery("Horarios.findByActivos").getResultList();/////////Nuevo metod de consulta
     }
     public List<Horarios> obtenerListaHor() {
         return persistence.getMysql().createNamedQuery("Horarios.findAll").getResultList();

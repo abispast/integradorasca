@@ -7,6 +7,7 @@ package com.smartsoft.uat.controller;
 
 import com.csvreader.CsvReader;
 import com.smartsoft.uat.business.HorariosBusiness;
+import com.smartsoft.uat.controller.view.AreaView;
 import com.smartsoft.uat.controller.view.HorariosView;
 import com.smartsoft.uat.controller.view.MateriasView;
 import com.smartsoft.uat.entity.Horarios;
@@ -41,6 +42,8 @@ public class HorariosController implements Serializable{
     private HorariosBusiness business;
     
     private HorariosView view;
+    
+    private AreaView areaview;
   
     
     @PostConstruct
@@ -53,7 +56,7 @@ public class HorariosController implements Serializable{
     
     public void mostrarLista(){
         view.setEntity(null);
-            view.setListaEntity(business.obtenerListaHor());
+        view.setListaEntity(business.obtenerListaActivos());
     }
     
     public void nuevo() {
@@ -68,7 +71,8 @@ public class HorariosController implements Serializable{
     }
 
     public void eliminar(Horarios entity) {
-       // entity.setActivo(false);
+        entity.setActivo(false);
+        business.eliminar(entity, null);
         sesion.MessageInfo("Registro eliminado");
         mostrarLista();
     }
@@ -95,7 +99,7 @@ public class HorariosController implements Serializable{
                 Horarios p = new Horarios();
                 DateFormat dateFormat= new SimpleDateFormat("HH:mm");
                 p.setId(0);
-                p.setActivo(1);
+                p.setActivo(true);
                 p.setPeriodo(csv.get("periodo"));
                 p.setFoliomateria(csv.get("foliomateria"));
                 p.setNombre(csv.get("nombre"));
@@ -105,16 +109,57 @@ public class HorariosController implements Serializable{
                 p.setApellidopa(csv.get("apellidopa"));
                 p.setApellidoma(csv.get("apellidoma")); 
                 p.setSalon(csv.get("salon"));
-                p.setLunesInicio(dateFormat.parse(csv.get("lunes_inicio")));
-                p.setLunesFin(dateFormat.parse(csv.get("lunes_fin")));
-                p.setMartesInicio(dateFormat.parse(csv.get("martes_inicio")));
-                p.setMartesFin(dateFormat.parse(csv.get("martes_fin")));
-                p.setMiercolesInicio(dateFormat.parse(csv.get("miercoles_inicio")));
-                p.setMiercolesFin(dateFormat.parse(csv.get("miercoles_fin")));
-                p.setJuevesInicio(dateFormat.parse(csv.get("jueves_inicio")));
-                p.setJuevesFin(dateFormat.parse(csv.get("jueves_fin")));
-                p.setViernesInicio(dateFormat.parse(csv.get("viernes_inicio")));
-                p.setViernesFin(dateFormat.parse(csv.get("viernes_fin")));
+                
+                if(csv.get("lunes_inicio")!= ""){
+                    p.setLunesInicio(dateFormat.parse(csv.get("lunes_inicio")));
+                }else{
+                    p.setLunesInicio(null);
+                }   
+                if(csv.get("lunes_fin")!= ""){
+                    p.setLunesFin(dateFormat.parse(csv.get("lunes_fin")));
+                }else{
+                    p.setLunesFin(null);
+                }   
+                if(csv.get("martes_inicio")!= ""){
+                    p.setMartesInicio(dateFormat.parse(csv.get("martes_inicio")));
+                }else{
+                    p.setMartesInicio(null);
+                }   
+                if(csv.get("martes_fin")!= ""){
+                    p.setMartesFin(dateFormat.parse(csv.get("martes_fin")));
+                }else{
+                    p.setMartesFin(null);
+                }   
+                if(csv.get("miercoles_inicio")!= ""){
+                    p.setMiercolesInicio(dateFormat.parse(csv.get("miercoles_inicio")));
+                }else{
+                    p.setMiercolesInicio(null);
+                }   
+                if(csv.get("miercoles_fin")!= ""){
+                    p.setMiercolesFin(dateFormat.parse(csv.get("miercoles_fin")));
+                }else{
+                    p.setMiercolesFin(null);
+                }   
+                if(csv.get("jueves_inicio")!= ""){
+                    p.setJuevesInicio(dateFormat.parse(csv.get("jueves_inicio")));
+                }else{
+                    p.setJuevesInicio(null);
+                }   
+                if(csv.get("jueves_fin")!= ""){
+                    p.setJuevesFin(dateFormat.parse(csv.get("jueves_fin")));
+                }else{
+                    p.setJuevesFin(null);
+                }
+                if(csv.get("viernes_fin")!= ""){
+                    p.setViernesInicio(dateFormat.parse(csv.get("viernes_inicio")));
+                }else{
+                    p.setViernesInicio(null);
+                }   
+                if(csv.get("viernes_fin")!= ""){
+                     p.setViernesFin(dateFormat.parse(csv.get("viernes_fin")));
+                }else{
+                    p.setViernesFin(null);
+                }  
                 
                 business.guardar(p);
                

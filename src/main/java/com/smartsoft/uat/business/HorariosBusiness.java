@@ -31,12 +31,12 @@ public class HorariosBusiness {
     }
 
     public void eliminar(Horarios entity, Integer idUsuario) {
-       // entity.setActivo(false);
-        dao.deleteLogically(entity);
+       entity.setActivo(false);
+       dao.deleteLogically(entity);
     }
 
-    public List<Horarios> obtenerListaHor() {
-        return dao.obtenerListaHor();
+    public List<Horarios> obtenerListaActivos() {
+        return dao.listaActivos();
     }
     
     public List<Horarios> listaHorariosWS(){

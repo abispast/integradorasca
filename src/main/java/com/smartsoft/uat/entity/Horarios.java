@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Horarios.findAll", query = "SELECT h FROM Horarios h")
     , @NamedQuery(name = "Horarios.findById", query = "SELECT h FROM Horarios h WHERE h.id = :id")
     , @NamedQuery(name = "Horarios.findByActivo", query = "SELECT h FROM Horarios h WHERE h.activo = :activo")
+    , @NamedQuery(name = "Horarios.findByActivos", query = "SELECT h FROM Horarios h WHERE h.activo = true")    
     , @NamedQuery(name = "Horarios.findByPeriodo", query = "SELECT h FROM Horarios h WHERE h.periodo = :periodo")
     , @NamedQuery(name = "Horarios.findByFoliomateria", query = "SELECT h FROM Horarios h WHERE h.foliomateria = :foliomateria")
     , @NamedQuery(name = "Horarios.findByNombre", query = "SELECT h FROM Horarios h WHERE h.nombre = :nombre")
@@ -58,14 +59,15 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Horarios.findByIdElimino", query = "SELECT h FROM Horarios h WHERE h.idElimino = :idElimino")})
 public class Horarios implements Serializable {
 
+    @Column(name = "activo")
+    private Boolean activo;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Column(name = "activo")
-    private Integer activo;
     @Size(max = 20)
     @Column(name = "periodo")
     private String periodo;
@@ -148,13 +150,6 @@ public class Horarios implements Serializable {
         this.id = id;
     }
 
-    public Integer getActivo() {
-        return activo;
-    }
-
-    public void setActivo(Integer activo) {
-        this.activo = activo;
-    }
 
     public String getPeriodo() {
         return periodo;
@@ -413,6 +408,14 @@ public class Horarios implements Serializable {
     @Override
     public String toString() {
         return "com.smartsoft.uat.entity.Horarios[ id=" + id + " ]";
+    }
+
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
     }
 
 }
