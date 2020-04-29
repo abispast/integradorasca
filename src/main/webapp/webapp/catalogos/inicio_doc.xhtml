@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="/WEB-INF/template_docen.xhtml" >
+        <ui:define name="titleModule">
+           
+        </ui:define>
+        
+        <ui:define name="content">
+            <div class="Container100  Responsive100 TexAlCenter" >
+                                <center><p:outputLabel value="Bienvenido a SCA" style="font-size: 22px !important;"/></center>
+                                <p:separator/>
+                                <center> <p:graphicImage value="/resources/images/Equipo.JPG" class="logoSmart" width="200px"/></center> 
+                                <p:outputLabel value="#{sesionController.view.usuario.nombreCompleto}"/>
+                            </div>
+            <p:spacer height="20px" />
+            <div class="Container100 ui-fluid">
+                <div class="Card">
+                    <h:form id="form" >
+                        <p:growl id="growl" showDetail="false" sticky="false" globalOnly="true" />
+                       
+                        <p:fragment>
+                          <p:outputLabel value="En SCA nos preocupamos por tu rendimiento academico por lo cual estamos 
+                                         comprometidos a ayudarte a mejorar y proporcionarte informacion de tu desempeño academico,
+                                         en conjunto con la UNIVERSIDAD AUTONAMA DE TLAXCAL Y DE LA FACULTAD DE CIENCIAS BASICAS INGENIERIA
+                                         Y TECNOLOGIA CAMPUS APIZAQUITO te damos la bienvenida"  />
+                          <br/>
+                          <br/>
+                          
+                          <div class="Container100 Responsive100" >
+                                <div class="Container20 Responsive100" />
+                                <div class="Container100 Responsive100" >
+                                    <p:link id="idNormandii" href="https://www.uatx.mx/?fbclid=IwAR0do9OhjTePpwlZ003GOcrqRZztm7T3ShbeNMOpB3A72ARg0Bd_0nMwEAU" target="_blank">
+                                   <center> <p:graphicImage value="/resources/images/ut.jpg" class="logoSmart" width="400px"  title="UAT" /></center>
+                                    </p:link>
+                                </div>
+                                
+                            </div>
+                           
+                          
+                        </p:fragment>
+
+                    </h:form>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>	
+
+

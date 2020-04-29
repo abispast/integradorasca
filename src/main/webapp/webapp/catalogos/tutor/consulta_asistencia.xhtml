@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="/WEB-INF/template_tutor.xhtml" >
+        <ui:define name="titleModule">
+           Consulta de asistencias
+         <p:separator/>
+        </ui:define>
+        
+        <ui:define name="content">
+            <p:spacer height="20px" />
+            <div class="Container100 ui-fluid">
+                <div class="Card">
+                    <h:form id="form" >
+                        <p:growl id="growl" showDetail="false" sticky="false" globalOnly="true" />
+                       
+                        <p:fragment>
+                            <div class="Container100" >
+                               
+                                <div class="Container50 Responsive50" >
+                                  
+                                    <div class="Container40 Responsive50" >
+                                        <p:outputLabel value="Nombre del alumno :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText></p:inputText>
+                                    </div>
+                                </div>
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Fecha de inicio :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                         <p:datePicker id="button"  showIcon="true" />
+                                    </div>
+                                </div>
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Fecha de fin :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                         <p:datePicker id="buttonn"  showIcon="true" />
+                                    </div>
+                                </div>
+                                
+                                
+                            </div>
+                      
+                            <div class="Container100 Responsive100" >
+                                <div class="Container60 Responsive100" />
+                                <div class="Container20 Responsive100" />
+                                    
+                               
+                                <div class="Container20 Responsive100" >
+                                    <p:commandButton value="Buscar"  icon="fa  fa-floppy-o" actionListener="#{justController.guardar()}" update="@form" class="White"/>
+                                    <br/>
+                                </div>
+                            </div>
+                               
+                            <div class="ClearBoth"></div>
+                            <div class="Container100" >
+                                <p:dataTable id="Asistencia"
+                                             var="user" 
+                                             rows="10"
+                                             paginator="true" 
+                                             rowsPerPageTemplate="5,10,15,20,30,40,50,100,150,200,300,500,1000"
+                                             emptyMessage="Sin registros"
+                                             paginatorPosition="top"
+                                             reflow="false" 
+                                             value="">
+
+                                    <p:column headerText="Matricula" > 
+                                        <h:outputText value=""  />
+                                    </p:column>
+                                    <p:column headerText="Nombre" > 
+                                        <h:outputText value=""  />
+                                    </p:column>
+                                    <p:column headerText="Materia" > 
+                                        <h:outputText value=""  />
+                                    </p:column>
+                                    
+                                    <p:column headerText="Fecha" > 
+                                        <h:outputText value=""  />
+                                    </p:column>
+                                    <p:column headerText="Asistencia" > 
+                                        <h:outputText value=""  />
+                                    </p:column>
+                                    
+                                    <p:column exportable="false" width="15%" headerText="Acciones"  > 
+                                        <div class="TexAlCenter">
+                                            <p:commandLink title="Editar" actionListener="#{usuariosController.editar(user)}" update=":form"  >
+                                                <i class="fa fa-pencil"></i>
+                                            </p:commandLink>
+                                            <p:spacer width="10"/>
+                                            <p:commandLink title="Eliminar usuario" actionListener="#{usuariosController.eliminar(user)}" update=":form" >
+                                                <i class="fa fa-trash-o"></i>
+                                                <p:confirm header="Eliminar usuario" message="Se eliminará el usuario" icon="ui-icon-alert" />
+                                            </p:commandLink>
+                                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                                <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/> 
+                                                <p:commandButton value="Continuar" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/> 
+                                            </p:confirmDialog>
+                                        </div>
+                                    </p:column>
+                                </p:dataTable>
+                            </div>
+                            
+                        </p:fragment>
+
+                    </h:form>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>	

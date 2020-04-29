@@ -1,0 +1,166 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pa="http://primefaces.org/atlas"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:form  id="menulateral">  
+        <div class="Container100 TexAlLeft" style="z-index: 999999">
+            <div class="menu-bg perfilAcotado " >
+                <input type="checkbox" id="btn-menu"/>
+                <label for="btn-menu" class="mostrarResponsive  "  style="z-index: 999999">
+                    <i class="fa fa-navicon"  style="color: colorSistema;font-size: 30px;margin-left: 20px" ></i>
+                </label>
+                <nav class="menu">
+                    <div class="EmptyBox10 "/>
+                    <div class="EmptyBox100 TexAlRight mostrarResponsive" >
+                        <label for="btn-menu" style="margin-right: 30px;margin-top: 30px;">
+                            <i class="fa fa-navicon" style="color: colorSistema;font-size: 30px" ></i>
+                        </label>
+                    </div>
+                    <div class="Container100 TexAlCenter"  >
+                        <center>
+                            <p:graphicImage value="/resources/images/uat.png" class="logoSmart" width="120px"  style="border-radius: 30px"      library="atlas-layout" /> 
+                            
+                        </center>
+                    </div>
+                    <div class="Container100 TexAlCenter"  >
+                        <center>
+                            <p:commandLink class="colorSistema" value="#{sesionController.view.usuario.nombreCompleto}" action="/webapp/catalogos/editarUsuario.xhtml?faces-redirect=true" style="font-size: 14px;color: colorSistema !important; text-decoration: none !important;" />
+                        </center>
+                    </div>
+                    
+                    
+                    
+                    
+                    <div class="EmptyBox30 "/>
+<!--                    <div class="Container100"  >
+                        <p:commandLink title="Inicio"   action="/webapp/funcionales/principal.xhtml?faces-redirect=true" style="text-decoration: none"  >
+                            <div class="Container100 menuLateral">
+                                <div class="Container20 TexAlCenter">
+                                    <i class="fa fa-home Fs20 colorSistema"></i>
+                                </div>                            
+                                <div class="Container80">
+                                    <p:outputLabel value="Inicio" class="Fs13 colorSistema " style=" font-weight: bold !important"/>
+                                </div>                            
+                            </div>         
+                        </p:commandLink>
+                    </div>-->
+                    
+                    <div class="Container100"  >
+                        <p:commandLink title="Inicio"   action="/webapp/catalogos/inicio_doc.xhtml?faces-redirect=true" style="text-decoration: none"  >
+                            <div class="Container100 menuLateral">
+                                <div class="Container20 TexAlCenter">
+                                    <i class="fa fa-home Fs20 colorSistema"></i>
+                                </div>                            
+                                <div class="Container80">
+                                    <p:outputLabel value="Inicio" class="Fs13 colorSistema" style=" font-weight: bold !important"/>
+                                </div>                            
+                            </div>         
+                        </p:commandLink>
+                       <!--//Nuevoooo-->
+                     <p:commandLink title="Enrolarse a Materias"   action="/webapp/catalogos/enrole_materias.xhtml?faces-redirect=true" style="text-decoration: none"  >
+                            <div class="Container100 menuLateral">
+                                <div class="Container20 TexAlCenter">
+                                    <i class="fa fa-check-circle Fs20 colorSistema"></i>
+                                </div>                            
+                                <div class="Container80">
+                                    <p:outputLabel value="Enrolar a materia" class="Fs13 colorSistema" style=" font-weight: bold !important"/>
+                                </div>                            
+                            </div>         
+                        </p:commandLink>
+                       <p:commandLink title="Validación de Alumnos"    style="text-decoration: none"  >
+                            <div class="Container100 menuLateral">
+                                <div class="Container20 TexAlCenter">
+                                    <i class="fa fa-check-square-o Fs20 colorSistema"></i>
+                                </div>                            
+                                <div class="Container80">
+                                    <p:outputLabel value="Validar alumnos" class="Fs13 colorSistema" style=" font-weight: bold !important"/>
+                                </div>                            
+                            </div>         
+                        </p:commandLink>
+                   
+                       <p:commandLink title="Registro Criterios de Evaluación"   style="text-decoration: none"  >
+                            <div class="Container100 menuLateral">
+                                <div class="Container20 TexAlCenter">
+                                    <i class="fa fa-book Fs20 colorSistema"></i>
+                                </div>                            
+                                <div class="Container80">
+                                    <p:outputLabel value="Criterios de evaluación" class="Fs13 colorSistema" style=" font-weight: bold !important"/>
+                                </div>                            
+                            </div>         
+                        </p:commandLink>
+                       <p:commandLink title="Pase de Lista"  style="text-decoration: none"  >
+                            <div class="Container100 menuLateral">
+                                <div class="Container20 TexAlCenter">
+                                    <i class="fa fa-users Fs20 colorSistema"></i>
+                                </div>                            
+                                <div class="Container80">
+                                    <p:outputLabel value="Pase de lista" class="Fs13 colorSistema" style=" font-weight: bold !important"/>
+                                </div>                            
+                            </div>         
+                        </p:commandLink>
+                       <p:commandLink title="Registro de Actividades"    style="text-decoration: none"  >
+                            <div class="Container100 menuLateral">
+                                <div class="Container20 TexAlCenter">
+                                    <i class="fa fa-edit Fs20 colorSistema"></i>
+                                </div>                            
+                                <div class="Container80">
+                                    <p:outputLabel value="Registrar actividades" class="Fs13 colorSistema" style=" font-weight: bold !important"/>
+                                </div>                            
+                            </div>         
+                        </p:commandLink>
+                       <p:commandLink title="Visualizar derecho a examen"    style="text-decoration: none"  >
+                            <div class="Container100 menuLateral">
+                                <div class="Container20 TexAlCenter">
+                                    <i class="fa fa-server Fs20 colorSistema"></i>
+                                </div>                            
+                                <div class="Container80">
+                                    <p:outputLabel value="Visualizar derecho a examen" class="Fs13 colorSistema" style=" font-weight: bold !important"/>
+                                </div>                            
+                            </div>         
+                        </p:commandLink>
+                       <p:commandLink title="Modificación de calificaciones"    style="text-decoration: none"  >
+                            <div class="Container100 menuLateral">
+                                <div class="Container20 TexAlCenter">
+                                    <i class="fa fa-edit Fs20 colorSistema"></i>
+                                </div>                            
+                                <div class="Container80">
+                                    <p:outputLabel value="Modificar calificacion" class="Fs13 colorSistema" style=" font-weight: bold !important"/>
+                                </div>                            
+                            </div>         
+                        </p:commandLink>
+                       <p:commandLink title="Consulta de asistencias"    style="text-decoration: none"  >
+                            <div class="Container100 menuLateral">
+                                <div class="Container20 TexAlCenter">
+                                    <i class="fa fa-graduation-cap Fs20 colorSistema"></i>
+                                </div>                            
+                                <div class="Container80">
+                                    <p:outputLabel value="Consultar asistencias" class="Fs13 colorSistema" style=" font-weight: bold !important"/>
+                                </div>                            
+                            </div>         
+                        </p:commandLink>
+                       <p:commandLink title="Reporte de Asitencias"    style="text-decoration: none"  >
+                            <div class="Container100 menuLateral">
+                                <div class="Container20 TexAlCenter">
+                                    <i class="fa fa-file-excel-o Fs20 colorSistema"></i>
+                                </div>                            
+                                <div class="Container80">
+                                    <p:outputLabel value="Reporte Asistencias" class="Fs13 colorSistema" style=" font-weight: bold !important"/>
+                                </div>                            
+                            </div>         
+                        </p:commandLink>
+                       
+                    </div>
+                    
+                </nav>
+            </div>
+        </div>
+
+
+
+
+    </h:form>
+</ui:composition>

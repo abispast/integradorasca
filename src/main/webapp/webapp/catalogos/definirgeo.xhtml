@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/WEB-INF/template_coord.xhtml" >
+        <a href="definirgeo.xhtml"></a>
+        <ui:define name="titleModule">
+            DEFINIR SALONES
+        </ui:define>
+        <ui:define name="content">
+            <p:spacer height="20px" />
+            <div class="Container100 ui-fluid">
+                <div class="Card">
+                    <h:form id="form" >
+                        <div class="Container100" >
+                                <center><p:outputLabel value="Salones" style="font-size: 22px !important;"/></center>
+                                <p:separator/>
+                        </div>
+                        <p:growl id="messages" showDetail="true" />                       
+                        <p:fragment rendered="#{puntosController.view.listaEntity!=null}">
+                            <div class="Container100">
+                                <p:dataTable var="areas" value="#{puntosController.view.listaEntity}">
+                                    <p:column headerText="Nombre">
+                                        <h:outputText value="#{areas.nombre}" />
+                                    </p:column>
+                                    <p:column exportable="false" width="15%" headerText="Acciones"  > 
+                                        <div class="TexAlCenter">
+                                            <p:commandLink title="Editar" actionListener="#{puntosController.editar(areas)}" update=":form"  >
+                                                <i class="fa fa-pencil"></i>
+                                            </p:commandLink>
+                                            <p:spacer width="10"/>
+                                            <p:commandLink title="Eliminar" actionListener="#{puntosController.eliminar(areas)}" update=":form" >
+                                                <i class="fa fa-trash-o"></i>
+                                                <p:confirm header="Eliminar" message="Se eliminará el usuario" icon="ui-icon-alert" />
+                                            </p:commandLink>
+                                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                                <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/> 
+                                                <p:commandButton value="Continuar" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/> 
+                                            </p:confirmDialog>
+                                        </div>
+                                    </p:column>
+                                </p:dataTable>
+                            </div>
+                            <div class="Container100">
+                                <div class="Container40"/>                                  
+                                <div class="Container20">
+                                    <p:commandButton icon="fa fa-plus"  class="White" value="Nuevo salón" action="#{puntosController.nuevo()}" update=":form"/>
+                                </div>    
+                            </div>
+                        </p:fragment> 
+                        <p:fragment rendered="#{puntosController.view.entity!=null}">                           
+                            <div class="Container80">
+                                <p:outputLabel value="Nombre :"/>
+                                <p:inputText value="#{puntosController.view.entity.nombre}"><p:ajax /></p:inputText>
+                            </div>
+                            <p:gmap center="19.417654, -98.126254" zoom="18" type="HYBRID" style="width:100%;height:600px" 
+                                model="#{puntosController.view.mapa}" >
+                            <p:ajax event="pointSelect" listener="#{puntosController.onPointSelect}" update=":form" />
+                        </p:gmap>
+                            <div class="Container20 Responsive50" >
+                                <p:commandButton value="Regresar" icon="fa fa-reply" actionListener="#{puntosController.mostrarLista()}" update="@form" class="White" process="@this"/>
+                            </div>
+                            <div class="Container20 Responsive50">
+                                <p:commandButton value="Guardar" action="#{puntosController.guardar()}" update=":form" />
+                            </div>
+                        </p:fragment>
+                        
+                    </h:form>
+                    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6tvzVNZ_lFVBS43uDv11zaoicsFycjA4" ></script>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>

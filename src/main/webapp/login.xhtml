@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Login</title>
+        <link rel="shortcut icon" type="image/x-icon" href="resources/images/ico.ico" />
+
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+        </f:facet>
+        <ui:insert name="head" />
+    </h:head>
+    <!--<h:body styleClass="LeadenBack" style="background-color: #007fc2 !important;"   >-->
+    <!--    <h:body styleClass="LeadenBack" style="background-image: url(resources/images/fondo.jpg);background-size: cover;background-repeat: none; background-position: center"   >-->
+    <h:body styleClass="LeadenBack" style="background-image:url(resources/images/fondo.jpeg)" >  <!--Fondo de batalla-->
+        <h:form id="form">   
+
+            <p:fragment rendered="#{usuariosController.view.listaEntity!=null}">
+            <div class="Wid95   MarAuto" >
+                <div class="EmptyBox100"/>
+
+                <div class="Container100 TexAlCenter Responsive100"  >
+                    <div class="Container25 TexAlCenter Responsive40" />
+                    <div class="Container50 TexAlCenter Responsive20"  style="color: #000000;border: 3px solid white ;border-radius: 25px;opacity: 0.9;background: white " > <!--Borde y fondo imagen-->
+                        <div class="EmptyBox10"/>
+                        <div class="Container100 TexAlCenter Responsive100"  >
+                            <center>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <p:graphicImage value="/resources/images/Equipo.JPG" class="logoSmart" width="200px"/> <!--Imagen final-->
+                            </center>
+                        </div>  
+                        <div class="Container100 TexAlCenter Responsive100"  >
+                            <center>
+                                <p:outputLabel value="SCA" style="color: #00B25C; font-size: 25px; "/>
+                                <p:growl id="growl" showDetail="true" sticky="true" />  
+                            </center>
+                        </div>  
+                        
+                        <div class="EmptyBox20"/>
+                        <div class="Container25" />
+                        <div class="Container50  Responsive100 TexAlLeft" >
+                            <div class="Container10  Responsive100 TexAlLeft"/>
+                            <div class="Container80  Responsive100 TexAlLeft">
+                                <div class="Container100  Responsive100 TexAlCenter">
+                                    <p:outputLabel value="Acceder al sistema" class="Fs14"/>
+                                </div> 
+                                <div class="EmptyBox20"/>
+                                <div class="Container100  Responsive100 TexAlCenter">
+                                    <p:inputText placeholder="Correo electrónico" value="#{sesionController.view.usuario.correo}" style=" width: 93%"/>
+                                </div> 
+                                <div class="Container100  Responsive100 TexAlLeft">
+                                    <p:password placeholder="Contraseña" value="#{sesionController.view.usuario.contrasena}"  style=" width: 93%"/>
+                                </div>
+                            </div>
+                            <div class="Container20  Responsive100 TexAlLeft"/>
+                            <div class="Container100  Responsive50 TexAlCenter">
+                                <p:commandLink  value="Olvidé mi contraseña" action="recuperarContrasena.xhtml?faces-redirect=true" style="text-decoration"></p:commandLink>
+                            </div>
+                            <div class="Container20  Responsive100 TexAlLeft"/>
+                            <div class="Container100  Responsive50 TexAlCenter">
+                                <p:commandButton value="Acceder" class="White" update=":form" action="#{sesionController.iniciarSesion()}" style="color: #00B25C;width: 150px"/>
+                            <!--</div>-->
+                            <!--<div class="Container100  Responsive50 TexAlCenter">-->
+                                <p:commandButton icon=" "  class="White" action="#{usuariosController.nuevo()}"  value="Nuevo usuario" update=":form"  />
+                            </div>
+                        </div>  
+                        <div class="EmptyBox50"/>
+                    </div>
+
+                </div>
+
+            </div>
+            </p:fragment>
+            
+            <p:fragment rendered="#{usuariosController.view.entity!=null}">
+                <div class="Wid95   MarAuto" >
+                    <div class="EmptyBox100"/>
+                            <!--<div class="Container20 Responsive50" />-->
+                            <!--<div class="Con
+                            .tainer60 Responsive50" >-->
+                    <div class="Container100 TexAlCenter Responsive100"  >
+                    <div class="Container25 TexAlCenter Responsive40" />
+                    <div class="Container50 TexAlCenter Responsive20"  style="color: #000000;border: 3px solid white ;border-radius: 25px;opacity: 0.9;background: white " > <!--Borde y fondo imagen-->
+                        <div class="EmptyBox10"/>
+                            <div class="Container100  Responsive100 TexAlCenter" >
+                                <p:outputLabel value="Selecciona un Usuario" style="font-size: 22px !important;"/>
+                                <p:separator/>
+                                <br/>
+                                 <br/>
+                            </div>
+                             <div class="Container100 Responsive100" >
+                                 <p:commandButton value="Coordinador" icon="fa fa-street-view" action="/reg_cor.xhtml?faces-redirect=true" update=":form"/>
+                                 <br/>
+                                 <br/>
+                                 <p:commandButton value="Docente" icon="fa fa-group" action="/reg_doc.xhtml?faces-redirect=true" update=":form"/>
+                                 <br/>
+                                 <br/>
+                            </div>
+                        <div class="Container100 Responsive100" >
+                                 <p:commandButton value="Alumno" icon="fa fa-graduation-cap" action="/reg_alum.xhtml?faces-redirect=true" update=":form"/>
+                                 <br/>
+                                 <br/>
+                                 <p:commandButton value="Padre de Famlia" icon="fa fa-male" action="/reg_pad.xhtml?faces-redirect=true" update=":form"/>
+                                 <br/>
+                                 <br/>
+                            </div>
+                        <br/>
+                                 <br/>
+                        <div class="Container100 Responsive100" >
+                                <div class="Container60 Responsive100" />
+                                <div class="Container20 Responsive100" >
+                                    
+                                </div>
+                                <div class="Container20 Responsive100" >
+                                    <br/>
+                                 
+                                   <p:commandButton value="Regresar" icon="fa fa-reply" actionListener="#{usuariosController.mostrarLista()}" update="@form" class="White" process="@this"/>
+                                </div>
+                            </div>
+                            <div class="ClearBoth"></div>
+                            </div>
+                        </div>
+                    </div>
+                </p:fragment>
+            <h:outputStylesheet name="css/core-layout.css" library="atlas-layout" />
+            <h:outputStylesheet name="css/font-awesome.css" library="atlas-layout" />
+            <h:outputStylesheet name="css/animate.css" library="atlas-layout" />
+            <h:outputStylesheet name="css/atlas-layout.css" library="atlas-layout" />
+            <h:outputStylesheet name="css/atlas-font.css" library="atlas-layout" />
+
+        </h:form>
+
+    </h:body>
+</html>
+
+

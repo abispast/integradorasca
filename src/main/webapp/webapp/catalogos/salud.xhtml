@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/WEB-INF/template_coord.xhtml" >
+        <ui:define name="titleModule">
+            CARGA DE ALUMNOS
+        </ui:define>
+        <ui:define name="content">
+            <p:spacer height="20px" />
+            <div class="Container100 ui-fluid">
+                <div class="Card">
+                    <h:form id="form" >
+                        <p:growl id="growl" showDetail="false" sticky="false" globalOnly="true"/>
+                         
+                        <div class="Container100  Responsive100 TexAlCenter" >
+                                <p:outputLabel value="Registro de alumnos" style="font-size: 22px !important;"/>
+                                <p:separator/>
+                            </div>
+                            <div class="Container100" >
+                              <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Matricula:" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{SaludController.view.entity.matricula}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Nombre completo :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{SaludController.view.entity.nombreCompleto}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Grado :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{SaludController.view.entity.grado}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Programa educativo :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{SaludController.view.entity.programaEducativo}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                
+                              
+                                
+                                
+                                
+                            </div>
+                            <!--</div>-->        
+                             <div class="Container100 Responsive100" >
+                                <div class="Container60 Responsive100" />
+                                <div class="Container20 Responsive100" />
+                                <div class="Container20 Responsive100" >
+                                    <p:commandButton value="Guardar"  icon="fa  fa-floppy-o" actionListener="#{SaludController.guardar()}" update="@form" class="White"/>
+                                </div>
+                            </div>
+                           
+                   
+                        
+                        <p:commandButton class="white" value="#{idioma['personal.descargarPlantilla']}" actionListener="#{AlumnosController}" ajax="false" onclick="PrimeFaces.monitorDownload(start,stop);" icon="fa fa-download" update=":form">
+                                         <p:fileDownload value="#{AlumnosController.view}"/>
+                        </p:commandButton>
+                        
+                                <p:fileUpload label="Cagar archivo CSV" fileUploadListener="#{SaludController.cargarClientes}" mode="advanced"
+                                              update=":form" auto="true" allowTypes="/(\.|\/)(csv)$/"  invalidFileMessage="no se pud" oncomplete="PF('dlg3').show();"/>
+                                
+                                
+<!--                                <p:dialog header="Effects" widgetVar="dlg3" showEffect="explode" hideEffect="bounce" height="100">
+                                <h:outputText value="This dialog has nice effects." />
+                                </p:dialog>-->
+                                
+                                
+                                <p:panel id="basic" header="Basic" style="height:300px ; width:300px;margin-bottom:5px" >
+                                    <center> <p:graphicImage value="/resources/images/ex.png"  width="200px" height="200px"  title="UAT" /></center>
+                                <center><h:panelGrid columns="2" cellpadding="10">
+<!--                                    <f:facet name="footer" >-->
+                                     <p:fileUpload label="Cagar archivo CSV" fileUploadListener="#{SaludController.cargarClientes}" mode="advanced"
+                                              update=":form" auto="true" allowTypes="/(\.|\/)(csv)$/"  invalidFileMessage="no se pudo" />
+                                     
+                                     <!--</f:facet>-->
+            
+            
+            
+        </h:panelGrid></center>
+    </p:panel>
+                                
+                    
+                    </h:form>
+                </div>
+            </div>
+            
+        </ui:define>
+    </ui:composition>
+</html>	
+
+
+
+
+
+

@@ -1,0 +1,268 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/WEB-INF/template_coord.xhtml" >
+        <ui:define name="titleModule">
+            CARGA DE HORARIOS
+           
+        </ui:define>
+        <ui:define name="content">
+            <p:spacer height="20px" />
+            <div class="Container100 ui-fluid">
+                <div class="Card">
+                    <h:form id="form" >
+                        <p:growl id="growl" showDetail="false" sticky="false" globalOnly="true" />
+                        <p:fragment rendered="#{horariosController.view.listaEntity!=null}">
+                            <div class="Container100" >
+                                <center><p:outputLabel value="Metodos de Carga" style="font-size: 22px !important;"/></center>
+                                <p:separator/>
+                            </div>
+                            <div class="Container50 Responsive50" >
+                                   <center> <div class="Container40 Responsive50"  >
+                                       <p:panel id="basic" header="Archivo .CSV" style="height:300px ; width:300px;margin-bottom:5px" >
+                                       <center> <p:graphicImage value="/resources/images/ex.png"  width="200px" height="200px"  title="UAT" /></center>
+                                       <center><h:panelGrid columns="2" cellpadding="10">
+                                       <p:fileUpload label="Cargar archivo CSV" fileUploadListener="#{horariosController.cargarHorarios}" mode="advanced"
+                                              update=":form" auto="true" allowTypes="/(\.|\/)(csv)$/"  invalidFileMessage="no se pudo" />
+                                        </h:panelGrid></center>
+                                        </p:panel>
+                                    </div></center>
+                                    
+                                
+                                <center><div class="Container60 Responsive50" >
+                                    <div class="Container50 Responsive50" />
+                                    <div class="Container40 Responsive50" >
+                                       <p:panel id="basic1" header="Manual    " style="height:300px ; width:300px;margin-bottom:5px" >
+                                               <center> <p:graphicImage value="/resources/images/man.png"  width="150px" height="200px"  title="UAT" /></center>
+                                               <center>
+                                                  <h:panelGrid columns="2" cellpadding="10">
+                                                  <p:commandButton icon="fa fa-plus"  class="White" action="#{horariosController.nuevo()}"  value="Llenar Formulario" update=":form"  />
+                                                  </h:panelGrid>
+                                               </center>
+                                        </p:panel> 
+                                    </div>
+                                </div></center>
+                                </div> 
+                        </p:fragment>
+                        
+                        
+                        <p:fragment rendered="#{horariosController.view.entity!=null}">
+                            
+                            <div class="Container100  Responsive100 TexAlCenter" >
+                                <p:outputLabel value="Carga Manual" style="font-size: 22px !important;"/>
+                                <p:separator/>
+                            </div>
+                            <div class="Container100" >
+                              <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Periodo:" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{horariosController.view.entity.periodo}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Folio Materia :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{horariosController.view.entity.foliomateria}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Nombre :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{horariosController.view.entity.nombre}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Grado :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{horariosController.view.entity.grado}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Grupo :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{horariosController.view.entity.grupo}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Nombre Docente :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{horariosController.view.entity.nombreDo}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Apellido Paterno :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{horariosController.view.entity.apellidopa}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Apellido Materno :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:inputText value="#{horariosController.view.entity.apellidoma}" ><p:ajax /></p:inputText>
+                                    </div>
+                                </div>
+                                <div class="Container50 Responsive50" >
+                                    <div class="Container40 Responsive50"  >
+                                        <p:outputLabel value="Salon :" />
+                                    </div>
+                                    <div class="Container60 Responsive50" >
+                                        <p:selectOneMenu  value="#{horariosController.view.entity.salon}" converter="omnifaces.SelectItemsConverter" >
+                                        <f:selectItem itemLabel="Selecciona uno"  />
+                                        <f:selectItems value="#{puntosController.view.listaEntity}" var="salon" itemLabel="#{salon.nombre}" itemValue="#{salon.nombre}"  />                                    
+                                        </p:selectOneMenu>
+                                    </div>
+                                </div>
+                                <div class="Container60 Responsive100 TexAlCenter " style="background-color: red !important;"> 
+                                    <table class="Responsive100 TexAlCenter">
+                                        <tr>
+                                            <td><strong>Dia</strong></td>
+                                            <td><strong>Hora Inicio</strong></td>
+                                            <td><strong>Hora Fin</strong></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><p:outputLabel value="Lunes"/></td>
+                                            <td><p:calendar id="inL" locale="es" minHour="07" value="#{horariosController.view.entity.lunesInicio}" pattern="HH:mm" timeOnly="true"><p:ajax event="dateSelect" update="finL"/></p:calendar></td>
+                                            <td><p:calendar id="finL" locale="es" minHour="#{horariosController.view.entity.lunesInicio.hours}" value="#{horariosController.view.entity.lunesFin}" pattern="HH:mm" timeOnly="true"/></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><p:outputLabel value="Martes"/></td>
+                                            <td><p:calendar id="inM" locale="es" minHour="07" value="#{horariosController.view.entity.martesInicio}" pattern="HH:mm" timeOnly="true"><p:ajax event="dateSelect" update="finM"/></p:calendar></td>
+                                            <td><p:calendar id="finM" minHour="#{horariosController.view.entity.martesInicio.hours}" value="#{horariosController.view.entity.martesFin}" pattern="HH:mm" timeOnly="true"/></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><p:outputLabel value="Miercoles"/></td>
+                                            <td><p:calendar id="inMM" locale="es" minHour="07" value="#{horariosController.view.entity.miercolesInicio}" pattern="HH:mm" timeOnly="true"><p:ajax event="dateSelect" update="finMM"/></p:calendar></td>
+                                            <td><p:calendar id="finMM" minHour="#{horariosController.view.entity.miercolesInicio.hours}" value="#{horariosController.view.entity.miercolesFin}" pattern="HH:mm" timeOnly="true"/></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><p:outputLabel value="Jueves"/></td>
+                                            <td><p:calendar id="inJ" locale="es" minHour="07" value="#{horariosController.view.entity.juevesInicio}" pattern="HH:mm" timeOnly="true"><p:ajax event="dateSelect" update="finJ"/></p:calendar></td>
+                                            <td><p:calendar id="finJ" minHour="#{horariosController.view.entity.juevesInicio.hours}" value="#{horariosController.view.entity.juevesFin}" pattern="HH:mm" timeOnly="true"/></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td><p:outputLabel value="Viernes"/></td>
+                                            <td><p:calendar id="inV" locale="es" minHour="07" value="#{horariosController.view.entity.viernesInicio}" pattern="HH:mm" timeOnly="true"><p:ajax event="dateSelect" update="finV"/></p:calendar></td>
+                                            <td><p:calendar id="finV" minHour="#{horariosController.view.entity.viernesInicio.hours}" value="#{horariosController.view.entity.viernesFin}" pattern="HH:mm" timeOnly="true"/></td>
+                                        </tr>
+                                </table>
+                            </div>
+                            </div>
+                        <!--</div>-->     
+                            <div class="Container100 Responsive100" >
+                                <div class="Container60 Responsive100" />
+                                <div class="Container20 Responsive100" >
+                                    <p:commandButton value="Regresar" icon="fa fa-reply" actionListener="#{horariosController.mostrarLista()}" update="@form" class="White" process="@this"/>
+                                </div>
+                                <div class="Container20 Responsive100" >
+                                    <p:commandButton value="Guardar"  icon="fa  fa-floppy-o" actionListener="#{horariosController.guardar()}" update="@form" class="White"/>
+                                </div>
+                            </div>
+                            <div class="ClearBoth"></div>
+                        </p:fragment>
+                        
+                        <p:fragment rendered="#{horariosController.view.listaEntity!=null}">
+                            <div class="Container100" >
+                                <p:dataTable id="Usuarios"
+                                             var="hr" 
+                                             rows="10"
+                                             paginator="true" 
+                                             rowsPerPageTemplate="5,10,15,20,30,40,50,100,150,200,300,500,1000"
+                                             emptyMessage="Sin registros"
+                                             paginatorPosition="top"
+                                             reflow="false" 
+                                             value="#{horariosController.view.listaEntity}">
+
+                                    <p:column headerText="Periodo" > 
+                                        <h:outputText value="#{hr.periodo}"  />
+                                    </p:column>
+                                    <p:column headerText="Folio Materia" > 
+                                        <h:outputText value="#{hr.foliomateria}"  />
+                                    </p:column>
+                                    <p:column headerText="Nombre Materia" > 
+                                        <h:outputText value="#{hr.nombre}"  />
+                                    </p:column>
+                                    <p:column headerText="Grado" > 
+                                        <h:outputText value="#{hr.grado}"  />
+                                    </p:column>
+                                    <p:column headerText="Grupo" > 
+                                        <h:outputText value="#{hr.grupo}"  />
+                                    </p:column>
+                                    <p:column headerText="Nombre Docente" > 
+                                        <h:outputText value="#{hr.nombreDo} #{hr.apellidopa} #{hr.apellidoma}"  />
+                                    </p:column>
+                                    <p:column headerText="Salón" > 
+                                        <h:outputText value="#{hr.salon}"  />
+                                    </p:column>
+                                    <p:column headerText="Lunes" > 
+                                        <h:outputText value="#{hr.lunesInicioString} - #{hr.lunesFinString} "/>
+                                    </p:column>
+                                    <p:column headerText="Martes" > 
+                                        <h:outputText value="#{hr.martesInicioString} - #{hr.martesFinString}"/>
+                                    </p:column>
+                                    <p:column headerText="Miercoles" > 
+                                        <h:outputText value="#{hr.miercolesInicioString} - #{hr.miercolesFinString}"  />
+                                    </p:column>
+                                    <p:column headerText="Jueves" > 
+                                        <h:outputText value="#{hr.juevesInicioString} - #{hr.juevesFinString}"  />
+                                    </p:column>
+                                    <p:column headerText="Viernes" > 
+                                        <h:outputText value="#{hr.viernesInicioString} - #{hr.viernesFinString}"  />
+                                    </p:column>
+                                    <p:column exportable="false" width="15%" headerText="Acciones"  > 
+                                        <div class="TexAlCenter">
+                                            <p:commandLink title="Editar" actionListener="#{horariosController.editar(hr)}" update=":form"  >
+                                                <i class="fa fa-pencil"></i>
+                                            </p:commandLink>
+                                            <p:spacer width="10"/>
+                                            <p:commandLink title="Eliminar Registro" actionListener="#{horariosController.eliminar(hr)}" update=":form" >
+                                                <i class="fa fa-trash-o"></i>
+                                                <p:confirm header="Eliminar Registro de Horario" message="Se eliminará este horario" icon="ui-icon-alert" />
+                                            </p:commandLink>
+                                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                                <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/> 
+                                                <p:commandButton value="Continuar" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/> 
+                                            </p:confirmDialog>
+                                        </div>
+                                    </p:column>
+                                </p:dataTable>
+                                <h:commandLink>
+                                    <p:outputLabel value="PDF"/>
+                                    <p:dataExporter type="pdf" target="Usuarios" fileName="Horarioss" encoding="Windows-1252"/>
+                                </h:commandLink>
+                            </div>
+                        </p:fragment>
+
+                        
+                    </h:form>
+                  
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>	

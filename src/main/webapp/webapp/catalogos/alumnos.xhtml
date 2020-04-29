@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="/WEB-INF/template_coord.xhtml" >
+        <ui:define name="titleModule">
+            Alumnos
+        </ui:define>
+        <ui:define name="content">
+            <p:spacer height="20px" />
+            <div class="Container100 ui-fluid">
+                <div class="Card">
+                    <h:form enctype="multipart/form-data">
+                        <p:growl id="messages" showDetail="true" />
+          
+                  <!--<p:fileUpload label="Importar Archivo Excel" value="#{alumnosController.handleFileUpload}" mode="simple" skinSimple="true"/>-->
+                        <p:fileUpload label="Seleccionar Archivo Excel" uploadLabel="Subir Archivo" cancelLabel="Cancelar" fileUploadListener="#{SaludController.cargarClientes(event)}" mode="advanced" dragDropSupport="false"
+                  update="messages" sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(csv)$/" />
+                        <br /> <br />
+                        
+                            <div class="EmptyBox30"/>
+                            <div class="Container80 Responsive50" />
+                            <div class="Container20 TexAlRight Responsive50" >
+                                <!--<p:commandButton value="Enviar" ajax="false" action="#{alumnosController.handleFileUpload(event)}" disabled="true" />-->
+                                 
+                            </div>
+                    </h:form>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>	

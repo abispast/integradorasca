@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="/WEB-INF/template_coord.xhtml" >
+        <ui:define name="titleModule">
+            VALIDAR DOCENTES
+        </ui:define>
+        <ui:define name="content">
+            <p:spacer height="20px" />
+            <div class="Container100 ui-fluid">
+                <div class="Card">
+                    <h:form id="form" >
+                        <p:growl id="growl" showDetail="false" sticky="false" globalOnly="true" />
+                        <p:fragment rendered="#{matController.view.entity==null}">
+                            <div class="Container100" >
+                                <p:dataTable id="Materias"
+                                             var="mat" 
+                                             rows="10"
+                                             paginator="true" 
+                                             rowsPerPageTemplate="5,10,15,20,30,40,50,100,150,200,300,500,1000"
+                                             emptyMessage="Sin registros"
+                                             paginatorPosition="top"
+                                             reflow="false" 
+                                             value="#{matController.view.listaEntity}">
+
+                                    <p:column headerText="FolioMateria" > 
+                                        <h:outputText value="#{mat.folmat}"  />
+                                    </p:column>
+                                    <p:column headerText="Nombre" > 
+                                        <h:outputText value="#{mat.nombremat}"  />
+                                    </p:column>
+                                    <p:column headerText="Nombre Docente" > 
+                                        <h:outputText value="#{mat.nombredocent}"  />
+                                    </p:column>
+                                    <p:column exportable="false" width="15%" headerText="Acciones"  > 
+                                        <div class="TexAlCenter">
+                                            <p:commandLink title="Confirmar" actionListener="#{matController.confirmar(mat)}" update=":form"  >
+                                                <i style="color: green" class="fa fa-check-circle"></i>
+                                            </p:commandLink>
+                                            <p:spacer width="10"/>
+                                            <p:commandLink title="Rechazar" actionListener="#{matController.rechazar(mat)}" update=":form" >
+                                                <i style="color: red" class="fa fa-times-circle"></i>
+                                                <p:confirm header="Rechazar Docente" message="Se rechazará la peticion del docente" icon="ui-icon-alert" />
+                                            </p:commandLink>
+                                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                                <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/> 
+                                                <p:commandButton value="Continuar" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/> 
+                                            </p:confirmDialog>
+                                            
+                                        </div>
+                                    </p:column>
+                                    
+
+                                </p:dataTable>
+                            </div>
+                            <div class="Container100 Responsive50" >
+                                <div class="EmptyBox30"/>
+                                <div class="Container80 Responsive50" />
+                                <div class="Container20 TexAlRight Responsive50" >
+                                    <!--<p:commandButton icon="fa fa-plus"  class="White" action="#{usuariosController.nuevo()}"  value="Nuevo usuario" update=":form"  />-->
+                                </div>
+                           </div>
+                        </p:fragment>
+                        
+
+                    </h:form>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>	
