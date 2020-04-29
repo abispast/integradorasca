@@ -77,7 +77,8 @@ public class HorariosController implements Serializable{
         mostrarLista();
     }
 
-    public void guardar() {
+    public void guardar(Horarios entity) {
+        entity.setActivo(true);
         business.guardar(view.getEntity());
         sesion.MessageInfo("Registro exitoso");
         mostrarLista();
