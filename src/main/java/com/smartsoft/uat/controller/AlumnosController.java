@@ -96,7 +96,7 @@ public class AlumnosController implements Serializable{
                sesion.MessageInfo("Registro exitoso");
             } 
         }catch(Exception e){
-                    sesion.MessageInfo("no se pudo");
+                    sesion.MessageInfo("Verifique Datos");
             }
         finally{
             if(null!=br){
