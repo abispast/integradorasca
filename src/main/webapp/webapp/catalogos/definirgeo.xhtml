@@ -63,6 +63,9 @@
                             <div class="Container20 Responsive50" >
                                 <p:commandButton value="Regresar" icon="fa fa-reply" actionListener="#{puntosController.mostrarLista()}" update="@form" class="White" process="@this"/>
                             </div>
+                            <div class="Container20 Responsive50" >
+                                <p:commandButton value="Limpiar" icon="fa fa-trash" actionListener="#{puntosController.limpiar()}" update="@form" class="White" process="@this"/>
+                            </div>
                             <div class="Container20 Responsive50">
                                 <p:commandButton value="Guardar" action="#{puntosController.guardar()}" update=":form" />
                             </div>

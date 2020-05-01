@@ -43,8 +43,9 @@ public class UsuariosController implements Serializable{
         view.setListaEntity(business.obtenerListaActivos());
     }
    
-    
-    
+    public void regresar(){
+        
+    }
     
     public void nuevo() {
         view.setEntity(new Usuarios());

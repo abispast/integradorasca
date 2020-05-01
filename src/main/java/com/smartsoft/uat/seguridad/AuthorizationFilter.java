@@ -60,7 +60,6 @@ public class AuthorizationFilter implements Filter {
                 || req.getRequestURI().startsWith(req.getContextPath() + "/reg_alum")
                 || req.getRequestURI().startsWith(req.getContextPath() + "/reg_cor")
                 || req.getRequestURI().startsWith(req.getContextPath() + "/reg_doc")
-                || req.getRequestURI().startsWith(req.getContextPath() + "/reg_pad")
                 || req.getRequestURI().startsWith(req.getContextPath() + "/cambiarContrasena")
                 || req.getRequestURI().startsWith(req.getContextPath() + "/errorSolicitudInactiva")
                 || req.getRequestURI().startsWith(req.getContextPath() + "/resources/less/layout/atlas-layout.less")

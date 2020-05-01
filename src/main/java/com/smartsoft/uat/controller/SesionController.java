@@ -54,7 +54,8 @@ public class SesionController implements Serializable {
         }
         return "";
     }
-
+    
+    
     public SesionView getView() {
         return view;
     }

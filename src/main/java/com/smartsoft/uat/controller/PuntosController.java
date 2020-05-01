@@ -47,7 +47,7 @@ public class PuntosController implements Serializable{
         view = new AreaView();
         view.setListaLatitudes(new ArrayList<>());
         view.setMapa(new DefaultMapModel());
-        
+        limpiar();
         mostrarLista();
     }
     
@@ -103,7 +103,7 @@ public class PuntosController implements Serializable{
         return false;
     }*/
     public void onPointSelect(PointSelectEvent event) {System.err.println("Hola"+event.getLatLng());
-        view.getMapa().getMarkers().clear();
+        //view.getMapa().getMarkers().clear();
         view.getListaLatitudes().add(event.getLatLng());
         view.getMapa().addOverlay(new Marker(event.getLatLng(), "Salida, Patio: " ));//getConfiguracionPoligonoVo().getPoligonoDTO().getNombre()));
          Polygon polygon = new Polygon();
@@ -117,6 +117,12 @@ public class PuntosController implements Serializable{
         polygon.setFillOpacity(0.7);
           
         view.getMapa().addOverlay(polygon);
+    }
+    
+    public void limpiar(){
+        view.setMapa(new DefaultMapModel());
+        view.setListaLatitudes(new ArrayList<>());
+        view.getMapa().getMarkers().clear();
     }
     public AreaView getView() {
         return view;

@@ -52,27 +52,27 @@ public class Usuarios implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
+    //@Basic(optional = false)
     @Column(name = "id")
     private Integer id;
     @Column(name = "activo")
     private Boolean activo;
-    @Size(max = 255)
+    //@Size(max = 255)
     @Column(name = "nombre")
     private String nombre;
-    @Size(max = 255)
+    //@Size(max = 255)
     @Column(name = "apellido_paterno")
     private String apellidoPaterno;
-    @Size(max = 255)
+    //@Size(max = 255)
     @Column(name = "apellido_materno")
     private String apellidoMaterno;
-    @Size(max = 255)
+    //@Size(max = 255)
     @Column(name = "correo")
     private String correo;
-    @Size(max = 255)
+    //@Size(max = 255)
     @Column(name = "contrasena")
     private String contrasena;
-    @Size(max = 255)
+    //@Size(max = 255)
     @Column(name = "telefono")
     private String telefono;
     @Column(name = "edad")
